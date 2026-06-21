@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/printdock-v1.0.0-1a1a2e?style=for-the-badge&logoColor=white" />
-
 # 📦 PrintDock
 
 ### Inventory Management System — International Book Distributor
