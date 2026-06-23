@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BookTrack - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#b2c5ff",
+                    "inverse-on-surface": "#ecf0ff",
+                    "primary-fixed": "#dae2ff",
+                    "tertiary-fixed": "#d8e2ff",
+                    "surface-container-low": "#f0f3ff",
+                    "surface-container": "#e8eeff",
+                    "surface": "#f9f9ff",
+                    "secondary-fixed-dim": "#42ddbf",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#0040a0",
+                    "tertiary-fixed-dim": "#b4c7f1",
+                    "on-tertiary-fixed-variant": "#34476a",
+                    "on-secondary-fixed": "#00201a",
+                    "on-primary-fixed": "#001847",
+                    "primary-container": "#1564e8",
+                    "surface-tint": "#0056d1",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#d6e3ff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#061b39",
+                    "on-primary": "#ffffff",
+                    "primary": "#004dbc",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#63f7d8",
+                    "inverse-primary": "#b2c5ff",
+                    "tertiary-container": "#5a6c92",
+                    "surface-container-high": "#dfe8ff",
+                    "secondary-fixed": "#66fadb",
+                    "secondary": "#006b5a",
+                    "outline": "#737786",
+                    "inverse-surface": "#1e314f",
+                    "on-tertiary-fixed": "#041b3d",
+                    "surface-bright": "#f9f9ff",
+                    "tertiary": "#425479",
+                    "on-primary-container": "#eceeff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "background": "#f9f9ff",
+                    "on-background": "#061b39",
+                    "on-secondary-fixed-variant": "#005143",
+                    "on-surface-variant": "#424654",
+                    "on-secondary-container": "#00705e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#eaeeff",
+                    "outline-variant": "#c2c6d7",
+                    "surface-variant": "#d6e3ff",
+                    "surface-dim": "#c9daff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "12px",
+                    "container-margin": "24px",
+                    "input-padding-y": "8px",
+                    "card-padding": "15px",
+                    "section-gap": "13px",
+                    "input-padding-x": "12px"
+            },
+            "fontFamily": {
+                    "page-heading": ["Inter"],
+                    "card-title": ["Inter"],
+                    "kpi-value": ["Inter"],
+                    "muted-caps": ["Inter"],
+                    "table-data": ["Inter"],
+                    "body-label": ["Inter"]
+            },
+            "fontSize": {
+                    "page-heading": ["14.5px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "card-title": ["12.5px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "kpi-value": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                    "muted-caps": ["10.5px", {"lineHeight": "14px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "table-data": ["11.5px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-label": ["11px", {"lineHeight": "16px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9ff;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .book-pattern {
+            background-color: #0D2244;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        @media (max-width: 768px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+            }
+            .branding-side {
+                display: none;
+            }
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 0.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-field {
+            background-color: #F5F9FE;
+            border: 0.5px solid #E1EBF5;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #004dbc;
+            outline: none;
+        }
+
+        .floating-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .btn-loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<main class="split-layout">
+<!-- Left Side: Branding -->
+<section class="branding-side book-pattern relative flex flex-col justify-center items-center p-container-margin overflow-hidden">
+<div class="absolute top-10 left-10 opacity-20 floating-icon" style="animation-delay: 0s;">
+<span class="material-symbols-outlined text-[120px] text-white">menu_book</span>
+</div>
+<div class="absolute bottom-20 right-10 opacity-10 floating-icon" style="animation-delay: 2s;">
+<span class="material-symbols-outlined text-[180px] text-white">library_books</span>
+</div>
+<div class="absolute top-1/2 right-[-50px] opacity-10 floating-icon" style="animation-delay: 4s;">
+<span class="material-symbols-outlined text-[140px] text-white">auto_stories</span>
+</div>
+<div class="z-10 text-center max-w-md">
+<div class="flex items-center justify-center gap-3 mb-6">
+<div class="w-12 h-12 bg-primary-container rounded-lg flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+<h1 class="font-page-heading text-[32px] font-extrabold text-white tracking-tight">BookTrack</h1>
+</div>
+<p class="font-page-heading text-xl text-primary-fixed-dim leading-relaxed font-medium">
+                    Kelola inventaris. <br/>
+<span class="text-white">Distribusikan lebih cerdas.</span>
+</p>
+<div class="mt-12 glass-effect p-6 rounded-xl text-left">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary-fixed">verified</span>
+<div>
+<p class="font-body-label text-white/80 mb-1">Status Sistem</p>
+<p class="font-page-heading text-white font-semibold">Semua Distribusi Berjalan Lancar</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 text-white/40 font-body-label">
+                International Logistics Standard Compliance
+            </div>
+</section>
+<!-- Right Side: Login Form -->
+<section class="flex flex-col justify-center items-center bg-surface p-container-margin relative">
+<div class="w-full max-w-[400px]">
+<div class="mb-10">
+<h2 class="font-page-heading text-2xl font-bold text-on-surface mb-2">Selamat Datang Kembali</h2>
+<p class="font-body-label text-on-surface-variant">Masukkan kredensial Anda untuk mengakses dashboard distribusi.</p>
+</div>
+<form class="space-y-section-gap" id="loginForm" onsubmit="return handleLogin(event)">
+<!-- Username Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-muted-caps text-on-surface-variant uppercase" for="username">Username</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">person</span>
+<input class="input-field w-full h-11 pl-10 pr-input-padding-x rounded-lg font-table-data text-on-surface" id="username" name="username" placeholder="Email atau ID Karyawan" required="" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<label class="font-muted-caps text-on-surface-variant uppercase" for="password">Password</label>
+<a class="font-muted-caps text-primary hover:underline" href="#">Lupa Password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">lock</span>
+<input class="input-field w-full h-11 pl-10 pr-12 rounded-lg font-table-data text-on-surface" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined text-lg" id="passwordIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Error Message -->
+<div class="hidden flex items-center gap-2 p-3 bg-error-container text-on-error-container rounded-lg border border-error/20" id="errorMessage">
+<span class="material-symbols-outlined text-lg">error</span>
+<p class="font-body-label" id="errorText">Username atau password yang Anda masukkan salah.</p>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-11 bg-primary-container hover:bg-primary text-white font-page-heading rounded-lg transition-all active:scale-[0.98] duration-150 shadow-sm mt-4" id="submitBtn" type="submit">
+                        Masuk ke Dashboard
+                    </button>
+</form>
+<div class="mt-8 pt-8 border-t border-outline-variant flex flex-col items-center gap-4">
+<p class="font-body-label text-on-surface-variant">Butuh bantuan akses?</p>
+<button class="flex items-center gap-2 font-page-heading text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">support_agent</span>
+<span>Hubungi Administrator IT</span>
+</button>
+</div>
+</div>
+<!-- Footer -->
+<footer class="absolute bottom-6 w-full text-center">
+<p class="font-muted-caps text-outline">
+                    © 2024 BookTrack Intl. Distribution. Versi 2.4.0-Stable
+                </p>
+</footer>
+</section>
+</main>
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.textContent = 'visibility';
+            }
+        }
+
+        function shakeForm() {
+            const form = document.getElementById('loginForm');
+            form.classList.add('translate-x-1');
+            setTimeout(() => form.classList.remove('translate-x-1'), 50);
+            setTimeout(() => form.classList.add('-translate-x-1'), 100);
+            setTimeout(() => form.classList.remove('-translate-x-1'), 150);
+        }
+
+        async function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const submitBtn = document.getElementById('submitBtn');
+
+            errorMsg.classList.add('hidden');
+            submitBtn.classList.add('btn-loading');
+            submitBtn.textContent = 'Memproses...';
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    submitBtn.textContent = 'Login berhasil!';
+                    submitBtn.classList.remove('btn-loading');
+                    // Store user info and redirect to dashboard
+                    sessionStorage.setItem('user', JSON.stringify(data.data));
+                    window.location.href = '/dashboard';
+                } else {
+                    errorText.textContent = data.message || 'Username atau password yang Anda masukkan salah.';
+                    errorMsg.classList.remove('hidden');
+                    shakeForm();
+                    submitBtn.classList.remove('btn-loading');
+                    submitBtn.textContent = 'Masuk ke Dashboard';
+                }
+            } catch (err) {
+                errorText.textContent = 'Tidak dapat terhubung ke server. Coba lagi.';
+                errorMsg.classList.remove('hidden');
+                shakeForm();
+                submitBtn.classList.remove('btn-loading');
+                submitBtn.textContent = 'Masuk ke Dashboard';
+            }
+
+            return false;
+        }
+    </script>
+</body></html>
