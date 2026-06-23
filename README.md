@@ -13,11 +13,6 @@
 ![Gradle](https://img.shields.io/badge/Gradle-Build-02303A?style=for-the-badge&logo=gradle&logoColor=white)
 ![OOP](https://img.shields.io/badge/Paradigm-OOP-5C2D91?style=for-the-badge&logo=java&logoColor=white)
 
-![Status](https://img.shields.io/badge/Status-Active_Development-22C55E?style=flat-square)
-![Course](https://img.shields.io/badge/Course-Pemrograman_Berorientasi_Objek-3B82F6?style=flat-square)
-![University](https://img.shields.io/badge/UPNVJ-S1_Sistem_Informasi-DC2626?style=flat-square)
-![Group](https://img.shields.io/badge/Kelompok-5-F59E0B?style=flat-square)
-
 </div>
 
 ---
