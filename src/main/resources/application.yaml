@@ -2,9 +2,9 @@ spring:
   application:
     name: printdock
   datasource:
-    url: jdbc:postgresql://localhost:5432/printdock_db
-    username: postgres
-    password: yourpassword
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:printdock_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
