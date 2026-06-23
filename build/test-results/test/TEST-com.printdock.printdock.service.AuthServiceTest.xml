@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.printdock.printdock.service.AuthServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-06-23T12:56:15.026Z" hostname="MacBook-Air.local" time="0.472">
+  <properties/>
+  <testcase name="login_wrongPassword_throwsInvalidInputException()" classname="com.printdock.printdock.service.AuthServiceTest" time="0.447"/>
+  <testcase name="login_userNotFound_throwsUserNotFoundException()" classname="com.printdock.printdock.service.AuthServiceTest" time="0.006"/>
+  <testcase name="login_validCredentials_returnsUserResponse()" classname="com.printdock.printdock.service.AuthServiceTest" time="0.014"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

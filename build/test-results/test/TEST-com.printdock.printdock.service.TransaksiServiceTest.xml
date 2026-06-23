@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.printdock.printdock.service.TransaksiServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-06-23T12:56:16.092Z" hostname="MacBook-Air.local" time="0.053">
+  <properties/>
+  <testcase name="masuk_negativeJumlah_throwsInvalidInputException()" classname="com.printdock.printdock.service.TransaksiServiceTest" time="0.007"/>
+  <testcase name="masuk_validRequest_incrementsStokAndSaves()" classname="com.printdock.printdock.service.TransaksiServiceTest" time="0.01"/>
+  <testcase name="masuk_barangNotFound_throwsBarangNotFoundException()" classname="com.printdock.printdock.service.TransaksiServiceTest" time="0.004"/>
+  <testcase name="keluar_insufficientStok_throwsStokTidakCukupException()" classname="com.printdock.printdock.service.TransaksiServiceTest" time="0.009"/>
+  <testcase name="keluar_sufficientStok_decrementsStokAndSaves()" classname="com.printdock.printdock.service.TransaksiServiceTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

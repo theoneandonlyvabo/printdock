@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.printdock.printdock.service.KategoriServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-06-23T12:56:15.836Z" hostname="MacBook-Air.local" time="0.064">
+  <properties/>
+  <testcase name="delete_kategoriNoBarang_deletesSuccessfully()" classname="com.printdock.printdock.service.KategoriServiceTest" time="0.022"/>
+  <testcase name="findById_notFound_throwsKategoriNotFoundException()" classname="com.printdock.printdock.service.KategoriServiceTest" time="0.009"/>
+  <testcase name="delete_kategoriHasBarang_throwsKategoriMasihDigunakanException()" classname="com.printdock.printdock.service.KategoriServiceTest" time="0.014"/>
+  <testcase name="create_validRequest_returnsKategoriResponse()" classname="com.printdock.printdock.service.KategoriServiceTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

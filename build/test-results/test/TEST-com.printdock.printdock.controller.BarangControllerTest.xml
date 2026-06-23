@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.printdock.printdock.controller.BarangControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-06-23T12:56:10.624Z" hostname="MacBook-Air.local" time="4.265">
+  <properties/>
+  <testcase name="getAll_returnsListInApiResponse()" classname="com.printdock.printdock.controller.BarangControllerTest" time="3.975"/>
+  <testcase name="getById_notFound_returns404WithErrorResponse()" classname="com.printdock.printdock.controller.BarangControllerTest" time="0.091"/>
+  <testcase name="create_validBody_returns201()" classname="com.printdock.printdock.controller.BarangControllerTest" time="0.159"/>
+  <system-out><![CDATA[19:56:13.836 [Test worker] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+19:56:13.846 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+19:56:13.854 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 4 ms
+19:56:14.665 [Test worker] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+19:56:14.665 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+19:56:14.666 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+19:56:14.753 [Test worker] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+19:56:14.754 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+19:56:14.755 [Test worker] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 1 ms
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

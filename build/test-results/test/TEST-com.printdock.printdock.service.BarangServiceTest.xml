@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.printdock.printdock.service.BarangServiceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-06-23T12:56:15.502Z" hostname="MacBook-Air.local" time="0.33">
+  <properties/>
+  <testcase name="create_validRequest_returnsBarangResponse()" classname="com.printdock.printdock.service.BarangServiceTest" time="0.305"/>
+  <testcase name="create_negativeStok_throwsInvalidInputException()" classname="com.printdock.printdock.service.BarangServiceTest" time="0.006"/>
+  <testcase name="create_kategoriNotFound_throwsKategoriNotFoundException()" classname="com.printdock.printdock.service.BarangServiceTest" time="0.009"/>
+  <testcase name="findById_notFound_throwsBarangNotFoundException()" classname="com.printdock.printdock.service.BarangServiceTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

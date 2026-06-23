@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.printdock.printdock.service.LaporanServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-06-23T12:56:15.905Z" hostname="MacBook-Air.local" time="0.183">
+  <properties/>
+  <testcase name="getLaporanTransaksi_returnsAllTransaksiAsReport()" classname="com.printdock.printdock.service.LaporanServiceTest" time="0.168"/>
+  <testcase name="getLaporanStok_returnsAllBarangAsStokReport()" classname="com.printdock.printdock.service.LaporanServiceTest" time="0.007"/>
+  <testcase name="getLaporanStokMenipis_returnsBarangBelowThreshold()" classname="com.printdock.printdock.service.LaporanServiceTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.printdock.printdock.model.TransaksiPolymorphismTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-06-23T12:56:14.893Z" hostname="MacBook-Air.local" time="0.123">
+  <properties/>
+  <testcase name="barangKeluar_proses_decrementsStok()" classname="com.printdock.printdock.model.TransaksiPolymorphismTest" time="0.112"/>
+  <testcase name="barangMasuk_proses_incrementsStok()" classname="com.printdock.printdock.model.TransaksiPolymorphismTest" time="0.004"/>
+  <testcase name="polymorphicCall_proses_worksForBothSubclasses()" classname="com.printdock.printdock.model.TransaksiPolymorphismTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
