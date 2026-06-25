@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
@@ -47,10 +48,12 @@ public class DashboardView extends BorderPane {
 
         // Logo
         HBox logo = new HBox(10);
-        logo.setPadding(new Insets(20, 16, 20, 16));
+        logo.setPadding(new Insets(16, 16, 16, 16));
         logo.setAlignment(Pos.CENTER_LEFT);
-        Label icon = new Label("📦");
-        icon.setStyle("-fx-font-size: 20px;");
+        ImageView icon = new ImageView(App.APP_ICON);
+        icon.setFitWidth(28);
+        icon.setFitHeight(28);
+        icon.setPreserveRatio(true);
         Label name = new Label("PrintDock");
         name.setStyle("-fx-font-size: 15px; -fx-font-weight: 800; -fx-text-fill: white;");
         logo.getChildren().addAll(icon, name);

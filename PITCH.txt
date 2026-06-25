@@ -1,0 +1,177 @@
+
+PRINTDOCK
+Sistem Informasi Manajemen Inventaris Buku
+==========================================
+
+
+APA ITU PRINTDOCK?
+------------------
+
+Bayangkan sebuah gudang buku di Jakarta. Setiap minggu, ratusan buku datang
+dari penerbit di Amerika dan Inggris. Setiap hari, buku keluar dikirim ke
+perpustakaan dan universitas di seluruh Asia Tenggara.
+
+Selama ini semua dicatat manual. Kertas. Spreadsheet. Tebak-tebakan stok.
+
+PrintDock hadir untuk mengubah itu.
+
+Aplikasi desktop berbasis Java ini mencatat setiap pergerakan buku secara
+real-time — dari momen buku tiba di gudang sampai saat buku dikirim ke
+institusi tujuan. Tidak ada lagi stok menumpuk karena tidak terpantau.
+Tidak ada lagi keputusan distribusi yang dibuat berdasarkan perkiraan.
+
+
+SIAPA PENGGUNANYA?
+------------------
+
+Ada dua tipe pengguna di sistem ini:
+
+  Admin   — akses penuh. Kelola data buku, kategori, dan lihat semua laporan.
+  Staff   — fokus operasional. Catat buku masuk dan keluar setiap harinya.
+
+Keduanya login dengan username dan password. Kredensial salah? Sistem
+langsung menolak — tidak ada celah masuk tanpa izin.
+
+
+FITUR UTAMA
+-----------
+
+1. DATA BARANG
+   Semua buku di gudang tercatat rapi. Setiap buku punya kode unik, judul,
+   nama penerbit, kategori, harga satuan, dan jumlah stok terkini. Bisa
+   ditambah, diedit, dan dihapus kapan saja.
+
+2. KATEGORI BUKU
+   Buku dikelompokkan berdasarkan kategori — Business, Technology,
+   Self-Development, dan lainnya. Kategori bisa dibuat dan diedit bebas.
+   Satu pengaman: kategori yang masih dipakai oleh buku tidak bisa dihapus.
+   Sistem akan menolak dan memberi tahu alasannya.
+
+3. BARANG MASUK
+   Setiap kali kiriman tiba dari penerbit, staff mencatat: buku apa,
+   berapa jumlahnya, tanggal terima, dan nama penerbit pengirim.
+   Stok langsung bertambah otomatis setelah transaksi disimpan.
+
+4. BARANG KELUAR
+   Setiap distribusi ke institusi tercatat: buku apa, berapa unit,
+   tujuan ke mana (nama institusi dan negara). Sebelum transaksi diproses,
+   sistem mengecek stok dulu. Kalau tidak cukup, transaksi ditolak —
+   bukan diam-diam dikurangi jadi negatif.
+
+5. LAPORAN STOK
+   Satu halaman yang menjawab semua pertanyaan manajemen:
+   - Berapa total stok sekarang?
+   - Berapa unit yang sudah masuk?
+   - Berapa unit yang sudah keluar?
+   - Buku mana yang stoknya hampir habis?
+
+   Buku dengan stok 20 unit atau kurang langsung muncul sebagai peringatan.
+   Keputusan reorder bisa dibuat sebelum stok benar-benar kosong.
+
+
+BAGAIMANA SISTEM INI DIBANGUN?
+--------------------------------
+
+PrintDock dibangun dengan dua bagian terpisah yang saling berkomunikasi:
+
+  Backend   — Spring Boot berjalan sebagai REST API. Semua logika bisnis,
+              validasi, dan akses database ada di sini.
+
+  Frontend  — JavaFX sebagai tampilan desktop. Berkomunikasi dengan backend
+              lewat HTTP. Semua operasi berat dijalankan di background thread
+              supaya tampilan tidak pernah freeze saat menunggu data.
+
+  Database  — PostgreSQL berjalan di dalam Docker. Setup satu perintah,
+              langsung siap pakai di environment manapun.
+
+
+KONSEP OOP YANG DITERAPKAN
+---------------------------
+
+Ini bukan sekadar kode yang jalan. Strukturnya dibangun dengan empat pilar
+Object-Oriented Programming:
+
+
+  INHERITANCE (Pewarisan)
+
+  Pengguna punya dua tipe — Admin dan Staff — tapi keduanya berbagi
+  atribut dasar: username, password, dan role. Daripada menulis dua kali,
+  keduanya mewarisi dari satu kelas induk: User.
+
+  Hal yang sama berlaku untuk transaksi. BarangMasuk dan BarangKeluar
+  punya banyak kesamaan (tanggal, jumlah, referensi buku), tapi juga
+  punya data unik masing-masing. Solusinya: keduanya mewarisi dari
+  kelas Transaksi.
+
+        User                    Transaksi
+        ├── Admin               ├── BarangMasuk
+        └── Staff               └── BarangKeluar
+
+
+  ENCAPSULATION (Enkapsulasi)
+
+  Semua data dalam sistem tidak bisa diubah sembarangan dari luar.
+  Field pada Barang, Kategori, User, dan Transaksi semuanya private.
+  Perubahan hanya boleh terjadi lewat jalur resmi yang sudah didefinisikan.
+  Ini mencegah data berubah tanpa sepengetahuan sistem.
+
+
+  POLYMORPHISM (Polimorfisme)
+
+  Ketika sistem memproses transaksi, ia tidak perlu tahu dulu apakah itu
+  BarangMasuk atau BarangKeluar. Ia cukup memanggil metode yang sama —
+  dan sistem secara otomatis menjalankan perilaku yang tepat berdasarkan
+  tipe transaksi yang sebenarnya.
+
+  Laporan juga bekerja dengan cara yang sama. Satu antarmuka, banyak
+  implementasi — masing-masing menghasilkan output sesuai kebutuhannya.
+
+
+  EXCEPTION HANDLING (Penanganan Error)
+
+  Setiap kondisi error punya nama dan penangannya sendiri:
+
+    - Stok tidak cukup saat barang keluar?
+      → StokTidakCukupException
+
+    - Hapus kategori yang masih dipakai?
+      → KategoriMasihDigunakanException
+
+    - ID buku tidak ditemukan?
+      → BarangNotFoundException
+
+  Tidak ada error yang dibiarkan lewat begitu saja. Semua ditangkap,
+  dicatat di server, dan dikembalikan ke pengguna sebagai pesan yang
+  bisa dimengerti — bukan kode error misterius.
+
+
+STACK TEKNOLOGI
+---------------
+
+  Bahasa          Java 21
+  Desktop UI      JavaFX
+  Backend         Spring Boot 3
+  Database        PostgreSQL 16
+  ORM             Hibernate / Spring Data JPA
+  Keamanan        Spring Security + BCrypt
+  Build           Gradle (multi-project)
+  Infrastruktur   Docker + Docker Compose
+
+
+PENUTUP
+-------
+
+PrintDock bukan prototipe. Ini sistem yang siap dipakai:
+
+  - Data aman: validasi di setiap pintu masuk
+  - Error informatif: pengguna tahu apa yang salah dan kenapa
+  - UI praktis: dropdown kategori, tabel dengan tombol aksi langsung,
+    laporan yang langsung bisa dibaca tanpa perlu diekspor dulu
+  - Setup mudah: satu perintah untuk menjalankan seluruh stack
+
+Dari gudang Jakarta ke perpustakaan Singapura — setiap buku terlacak.
+
+
+==========================================
+PrintDock — Kelompok 5 Sistem Informasi
+Universitas Pembangunan Nasional Veteran Jakarta, 2026

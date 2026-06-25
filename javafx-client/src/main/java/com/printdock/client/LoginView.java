@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 
@@ -55,17 +56,18 @@ public class LoginView {
         pane.setStyle("-fx-background-color: " + COLOR_BRAND_BG + ";");
 
         // Logo row
-        HBox logo = new HBox(10);
+        HBox logo = new HBox(14);
         logo.setAlignment(Pos.CENTER);
 
-        Label iconBox = new Label("📦");
-        iconBox.setStyle("-fx-font-size: 26px; -fx-background-color: #3B5BAD; " +
-                "-fx-background-radius: 10; -fx-padding: 6 8;");
+        ImageView logoImg = new ImageView(App.APP_ICON);
+        logoImg.setFitWidth(56);
+        logoImg.setFitHeight(56);
+        logoImg.setPreserveRatio(true);
 
         Label appName = new Label("PrintDock");
-        appName.setStyle("-fx-font-size: 26px; -fx-font-weight: 800; -fx-text-fill: white;");
+        appName.setStyle("-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: white;");
 
-        logo.getChildren().addAll(iconBox, appName);
+        logo.getChildren().addAll(logoImg, appName);
 
         // Tagline
         Label tagline = new Label("Kelola inventaris toko buku Anda\ndengan mudah dan efisien");

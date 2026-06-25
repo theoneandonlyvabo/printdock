@@ -3,16 +3,21 @@ package com.printdock.client;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
     private static Stage stage;
 
+    static final Image APP_ICON = new Image(
+            App.class.getResourceAsStream("/com/printdock/client/logo.png"));
+
     @Override
     public void start(Stage s) {
         stage = s;
         stage.setTitle("PrintDock");
+        stage.getIcons().add(APP_ICON);
         stage.setScene(new Scene(new LoginView().getRoot(), 1000, 620));
         stage.setMinWidth(640);
         stage.setMinHeight(480);
