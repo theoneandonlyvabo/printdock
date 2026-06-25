@@ -232,10 +232,10 @@ public class LoginView {
 
         new Thread(() -> {
             try {
-                boolean ok = api.login(user, pass);
+                var userData = api.login(user, pass);
                 Platform.runLater(() -> {
                     resetButton();
-                    if (ok) {
+                    if (userData != null) {
                         onSuccess(user);
                     } else {
                         showError("⚠  Username atau password yang Anda masukkan salah.");
@@ -251,11 +251,7 @@ public class LoginView {
     }
 
     private void onSuccess(String username) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Login Berhasil");
-        alert.setHeaderText("Selamat datang, " + username + "!");
-        alert.setContentText("Anda berhasil masuk ke PrintDock Dashboard.");
-        alert.showAndWait();
+        App.showDashboard(username, "STAFF");
     }
 
     private void showError(String msg) {

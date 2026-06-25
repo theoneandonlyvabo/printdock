@@ -1,23 +1,41 @@
 package com.printdock.client;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
 
+    private static Stage stage;
+
     @Override
-    public void start(Stage stage) {
-        LoginView login = new LoginView();
-        Scene scene = new Scene(login.getRoot(), 1000, 620);
-        stage.setTitle("PrintDock - Login");
-        stage.setScene(scene);
+    public void start(Stage s) {
+        stage = s;
+        stage.setTitle("PrintDock");
+        stage.setScene(new Scene(new LoginView().getRoot(), 1000, 620));
         stage.setMinWidth(640);
         stage.setMinHeight(480);
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void showDashboard(String username, String role) {
+        Platform.runLater(() -> {
+            stage.getScene().setRoot(new DashboardView(username, role));
+            stage.setWidth(1280);
+            stage.setHeight(800);
+            stage.centerOnScreen();
+        });
     }
+
+    public static void showLogin() {
+        Platform.runLater(() -> {
+            stage.getScene().setRoot(new LoginView().getRoot());
+            stage.setWidth(1000);
+            stage.setHeight(620);
+            stage.centerOnScreen();
+        });
+    }
+
+    public static void main(String[] args) { launch(args); }
 }

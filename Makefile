@@ -10,6 +10,7 @@ db:
 	@echo "PostgreSQL ready."
 
 backend:
+	@lsof -ti:8080 | xargs kill -9 2>/dev/null || true
 	DB_HOST=localhost DB_PORT=5433 DB_NAME=printdock_db DB_USER=postgres DB_PASSWORD=postgres \
 	./gradlew bootRun &
 
