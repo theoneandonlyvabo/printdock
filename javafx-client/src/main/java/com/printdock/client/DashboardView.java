@@ -54,6 +54,7 @@ public class DashboardView extends BorderPane {
         icon.setFitWidth(28);
         icon.setFitHeight(28);
         icon.setPreserveRatio(true);
+        icon.setSmooth(true);
         Label name = new Label("PrintDock");
         name.setStyle("-fx-font-size: 15px; -fx-font-weight: 800; -fx-text-fill: white;");
         logo.getChildren().addAll(icon, name);

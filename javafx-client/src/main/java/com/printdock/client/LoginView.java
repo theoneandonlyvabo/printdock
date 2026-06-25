@@ -55,14 +55,15 @@ public class LoginView {
         pane.setPadding(new Insets(60));
         pane.setStyle("-fx-background-color: " + COLOR_BRAND_BG + ";");
 
-        // Logo row
-        HBox logo = new HBox(14);
+        // Logo — image stacked above text
+        VBox logo = new VBox(10);
         logo.setAlignment(Pos.CENTER);
 
         ImageView logoImg = new ImageView(App.APP_ICON);
-        logoImg.setFitWidth(56);
-        logoImg.setFitHeight(56);
+        logoImg.setFitWidth(80);
+        logoImg.setFitHeight(80);
         logoImg.setPreserveRatio(true);
+        logoImg.setSmooth(true);
 
         Label appName = new Label("PrintDock");
         appName.setStyle("-fx-font-size: 28px; -fx-font-weight: 800; -fx-text-fill: white;");

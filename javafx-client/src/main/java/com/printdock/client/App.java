@@ -2,9 +2,12 @@ package com.printdock.client;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.awt.Taskbar;
 
 public class App extends Application {
 
@@ -18,10 +21,20 @@ public class App extends Application {
         stage = s;
         stage.setTitle("PrintDock");
         stage.getIcons().add(APP_ICON);
+        setDockIcon();
         stage.setScene(new Scene(new LoginView().getRoot(), 1000, 620));
         stage.setMinWidth(640);
         stage.setMinHeight(480);
         stage.show();
+    }
+
+    private static void setDockIcon() {
+        if (!Taskbar.isTaskbarSupported()) return;
+        try {
+            var tb = Taskbar.getTaskbar();
+            if (tb.isSupported(Taskbar.Feature.ICON_IMAGE))
+                tb.setIconImage(SwingFXUtils.fromFXImage(APP_ICON, null));
+        } catch (Exception ignored) {}
     }
 
     public static void showDashboard(String username, String role) {
